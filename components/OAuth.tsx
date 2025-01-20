@@ -1,9 +1,27 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, Linking, Alert } from "react-native";
 import CustomButton from "./CustomButton";
 import { icons } from "@/constants";
+import { useCallback } from "react";
+import { useOAuth } from "@clerk/clerk-expo";
+import { googleOAuth } from "@/libs/auth";
+import { router } from "expo-router";
 
 const OAuth = () => {
-  const handleGoogleSignIn = async () => {};
+  const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
+
+  const handleGoogleSignIn = async () => {
+    const result = await googleOAuth(startOAuthFlow);
+
+    if (result.code === "session_exists") {
+      Alert.alert("Success", "Session exists. Redirecting to home screen.");
+      router.replace("/(root)/(tabs)/home");
+      return;
+    }
+
+    router.replace("/(root)/(tabs)/home");
+
+    Alert.alert(result.success ? "Success" : "Error", result.message);
+  };
 
   return (
     <View>

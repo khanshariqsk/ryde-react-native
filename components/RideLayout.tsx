@@ -4,7 +4,8 @@ import {
   TouchableOpacity,
   Image,
   TouchableWithoutFeedback,
-  Keyboard
+  Keyboard,
+  Platform
 } from "react-native";
 import React, { useRef } from "react";
 import { router } from "expo-router";
@@ -26,7 +27,9 @@ const RideLayout = ({
   return (
     <View className="flex-1 bg-white">
       <View className="flex flex-col h-screen bg-blue-500">
-        <View className="flex flex-row absolute z-10 top-16 items-center justify-center px-5">
+        <View
+          className={`flex flex-row absolute z-10 ${Platform.OS === "ios" ? "top-16" : "top-4"} items-center justify-center px-5`}
+        >
           <TouchableOpacity onPress={() => router.back()}>
             <View className="w-10 h-10 bg-white rounded-full items-center justify-center">
               <Image

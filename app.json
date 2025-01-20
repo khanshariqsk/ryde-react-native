@@ -5,18 +5,17 @@
     "version": "1.0.0",
     "orientation": "portrait",
     "scheme": "myapp",
-    "platforms": ["ios", "android"],
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
     },
+    "icon": "./assets/images/splash.png",
     "splash": {
       "image": "./assets/images/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#2f80ed"
     },
-    "icon": "./assets/images/icon.png",
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
@@ -34,6 +33,14 @@
         "expo-router",
         {
           "origin": "https://uber.com/"
+        }
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#2f80ed",
+          "image": "./assets/images/splash.png",
+          "imageWidth": 200
         }
       ]
     ],

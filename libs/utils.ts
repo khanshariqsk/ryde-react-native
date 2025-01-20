@@ -24,6 +24,7 @@ export function formatTime(minutes: number): string {
 
 export function formatDate(dateString: string): string {
   const date = new Date(dateString);
+
   const day = date.getDate();
   const monthNames = [
     "January",
@@ -42,5 +43,13 @@ export function formatDate(dateString: string): string {
   const month = monthNames[date.getMonth()];
   const year = date.getFullYear();
 
-  return `${day < 10 ? "0" + day : day} ${month} ${year}`;
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const amPm = hours >= 12 ? "PM" : "AM";
+
+  // Convert to 12-hour format
+  const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+  const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+
+  return `${day < 10 ? "0" + day : day} ${month} ${year}, ${formattedHours}:${formattedMinutes} ${amPm}`;
 }

@@ -79,7 +79,7 @@ const Map = () => {
       provider={PROVIDER_DEFAULT}
       style={{ flex: 1, width: "100%", height: "100%", borderRadius: 16 }}
       tintColor="black"
-      mapType="mutedStandard"
+      mapType="standard"
       showsPointsOfInterest={false}
       showsUserLocation={true}
       userInterfaceStyle="light"

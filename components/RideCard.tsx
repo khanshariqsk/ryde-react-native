@@ -2,34 +2,7 @@ import { View, Text, Image } from "react-native";
 import React from "react";
 import { icons } from "@/constants";
 import { formatDate, formatTime } from "@/libs/utils";
-// import { Ride } from "@/types/type";
-
-interface Driver {
-  driver_id: string;
-  first_name: string;
-  last_name: string;
-  profile_image_url: string;
-  car_image_url: string;
-  car_seats: number;
-  rating: string;
-}
-
-interface Ride {
-  ride_id: string;
-  origin_address: string;
-  destination_address: string;
-  origin_latitude: string;
-  origin_longitude: string;
-  destination_latitude: string;
-  destination_longitude: string;
-  ride_time: number;
-  fare_price: string;
-  payment_status: string;
-  driver_id: number;
-  user_id: string;
-  created_at: string;
-  driver: Driver;
-}
+import { Ride } from "@/types/type";
 
 const RideCard = ({
   ride: {
@@ -75,11 +48,21 @@ const RideCard = ({
         <View className="flex flex-col w-full mt-5 bg-general-500 rounded-lg p-3 items-start justify-center">
           <View className="flex flex-row items-center w-full justify-between mb-5">
             <Text className="text-md font-JakartaMedium text-gray-500">
-              Date & Time
+              Date
             </Text>
 
             <Text className="text-md font-JakartaMedium text-gray-500">
-              {formatDate(created_at)} {formatTime(ride_time)}
+              {formatDate(created_at)}
+            </Text>
+          </View>
+
+          <View className="flex flex-row items-center w-full justify-between mb-5">
+            <Text className="text-md font-JakartaMedium text-gray-500">
+              Ride Time
+            </Text>
+
+            <Text className="text-md font-JakartaMedium text-gray-500">
+              {formatTime(ride_time)}
             </Text>
           </View>
 

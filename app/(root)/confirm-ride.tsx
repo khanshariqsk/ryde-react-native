@@ -25,6 +25,8 @@ const ConfirmRide = () => {
             <CustomButton
               title="Select Ride"
               onPress={() => router.push("/(root)/book-ride")}
+              bgVariant={selectedDriver ? "primary" : "secondary"}
+              disabled={!selectedDriver}
             />
           </View>
         )}
